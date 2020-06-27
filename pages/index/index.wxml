@@ -1,0 +1,14 @@
+<!--index.wxml-->
+<view class="modle" wx:for="{{applictaion}}" wx:key="indexHead" wx:for-item="headItem">
+  <view class="appClassTitle">
+  {{headItem.titleName}}
+  </view>
+  <view class="appClassBody">
+   <view class="itemStyle" wx:for="{{headItem.subApp}}" wx:key="index" wx:for-item="bodyItem" 
+    hover-class="plain-hover" catchtap="callPage" id="{{bodyItem.nav}}">
+    <image class="icon-img" src="{{bodyItem.imgUrl}}"></image>
+    <text class="icon-name">{{bodyItem.appName}}</text>
+  </view>
+  </view>
+ 
+</view>

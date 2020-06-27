@@ -1,0 +1,195 @@
+/* hardwear/pages/bleOperate/bleOperate.wxss */
+page {
+  height: 100%;
+  width: 100%;
+}
+
+.bleHead {
+  width: 100%;
+  height: auto;
+  display: flex;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: gray dashed 3px;
+}
+
+.bleName {
+  margin-left: 5px;
+  size: 50px;
+  font-weight: 600;
+  color: gray;
+}
+
+/* swtich样式-start
+/*swtich整体大小*/
+/* .wx-switch-input {
+  width: 120rpx !important;
+  height: 60rpx !important;
+} */
+
+/*白色样式（false的样式）*/
+/* .wx-switch-input::before {
+  width: 118rpx !important;
+  height: 56rpx !important;
+} */
+
+/*绿色样式（true的样式）*/
+/* .wx-switch-input::after {
+  width: 70rpx !important;
+  height: 56rpx !important;
+} */
+
+.bleBody {
+  height: 95%;
+  width: 98%;
+}
+
+.bodyTop {
+  height: 80%;
+  width: 100%;
+  border-bottom: grey groove 1px;
+}
+
+.msgBoard{
+  display: flex;
+  width: 100%;
+  height: 70%;
+  padding-top: 10px;
+  border-radius: 5px;
+  border:2px #F0E68C solid;
+  align-items: center;
+  justify-content: center;
+}
+
+.receiveMsg{
+  font-family: '黑体';
+  white-space: normal;
+  word-wrap: break-word;
+  line-height: normal;
+  height: 90%;
+  /* height: fit-content; */
+}
+
+.sendBoard{
+  /* display: flex; */
+  width: 100%;
+  height: 20%;
+  /* padding: 5px; */
+  border-radius: 2px;
+  /* border:1px #F0E68C solid; */
+}
+
+.inputText{
+  display: inline-block;
+  word-break: break-all;
+  width: 98%;  
+  height: auto;
+  padding: 3%;
+  margin-bottom: 5px;
+  border: 1px solid rgba(99, 80, 80, 0.762);
+  text-align: center;
+}
+
+.bodyBottom {
+  height: 15%;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bleSearch {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+}
+
+.btn-hover {
+  position: relative;
+  top: 3rpx;
+  box-shadow: 0px 0px 8px #999 inset;
+}
+
+/* 镂空按钮 点击阴影不宜太深 */
+.plain-hover {
+  position: relative;
+  top: 3rpx;
+  box-shadow: 0px 0px 10px #bbbec4 inset;
+}
+
+
+
+
+
+.outterBorder {
+  display: none;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  background: rgba(190, 190, 190, 0.5);
+}
+
+.centerSelector {
+  position: fixed;
+  /* align-self: center;
+  align-items: center; */
+  background: #fff;
+  border: 3px solid #818181;
+  border-radius: 10px;
+  width: 300px;
+  height: 70%;
+  top: 15%;
+  padding: 1.5px;
+}
+
+.centerMenu{
+  position: fixed;
+  font-family: "楷体";
+  align-self: center;
+  align-items: center;
+  background: #fff;
+  border: 3px solid #818181;
+  border-radius: 10px;
+  width: 300px;
+  height: auto;
+  top: 20%;
+  padding: 1.5px;
+}
+
+.checkBoxInputChecked{
+  width:150px;border-bottom:1px red solid;text-align: center;
+}
+.checkBoxInputUnchecked{
+  width:150px;border-bottom:1px gray solid;text-align: center;
+}
+
+.device_list {
+  display: block;
+  height: 50%;
+  /* margin-top: 0; */
+  margin: auto;
+  border: 1px solid #EEE;
+  border-radius: 5px;
+  width: 80%;
+}
+.device_item {
+  border-bottom: 1px solid #EEE;
+  padding: 10px;
+  color: rgba(102, 102, 102, 0.664);
+}
+.device_item_hover {
+  background-color: rgba(0, 0, 0, .1);
+}
+
+.sendcodebtn[disabled][type="default"],wx-button[disabled]:not([type])
+{
+  background-color: #BFA576;
+  color: #ffffff;
+}

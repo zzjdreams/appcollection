@@ -1,0 +1,46 @@
+/**app.wxss**/
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box;
+} 
+
+.btn-hover{
+  position: relative;
+  top: 3rpx;
+  box-shadow:0px 0px 8px #999 inset; 
+}
+/* 镂空按钮 点击阴影不宜太深 */
+.plain-hover{
+  position: relative;
+  top: 3rpx;
+  box-shadow:0px 0px 10px #bbbec4 inset; 
+}
+
+@font-face {
+  font-family: 'webfont';
+  font-display: swap;
+  src: url('//at.alicdn.com/t/webfont_snv32pkiolq.eot'); /* IE9*/
+  src: url('//at.alicdn.com/t/webfont_snv32pkiolq.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('//at.alicdn.com/t/webfont_snv32pkiolq.woff2') format('woff2'),
+  url('//at.alicdn.com/t/webfont_snv32pkiolq.woff') format('woff'), /* chrome、firefox */
+  url('//at.alicdn.com/t/webfont_snv32pkiolq.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+  url('//at.alicdn.com/t/webfont_snv32pkiolq.svg#Alibaba-PuHuiTi-Regular') format('svg'); /* iOS 4.1- */
+}
+
+.fontStyle{
+  font-family:"webfont" !important;
+  font-size:16px;font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+text{
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+

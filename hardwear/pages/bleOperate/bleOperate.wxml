@@ -1,0 +1,98 @@
+<!--hardwear/pages/bleOperate/bleOperate.wxml-->
+<wxs module="utils">
+	module.exports.max = function(n1, n2) {
+		return Math.max(n1, n2)
+	}
+	module.exports.len = function(arr) {
+		arr = arr || []
+		return arr.length
+	}
+</wxs>
+<view class="bleHead">
+	<text class="bleName">{{bleName}}</text>
+	<switch bindchange="switch" checked="{{isChecked}}"></switch>
+</view>
+<view class="bleBody">
+	<view class="bodyTop">
+		<block wx:if="{{isConnected}}" style="height:100%;width:100%">
+			<view class="msgBoard">
+				<scroll-view style="height:100%;width:95%" scroll-y scroll-with-animation>
+				<!-- textDisplay为none时隐藏 -->
+					<textarea class="receiveMsg" value="{{receiveMsg}}" fixed='true' maxlength="3000" style="display:{{textDisplay}}"></textarea>
+				</scroll-view>
+			</view>
+			<view class="sendBoard">
+				<input type="inputText" value="{{commdata}}" bindinput="keylistener" class="inputText" placeholder="请输入发送内容"></input>
+				<view style="display:flex;justify-content: space-between;width:98%;align-items: center;">
+					<!-- <view style="display:flex;flex-direction: column;"> -->
+					<button size="mini" type="primary" bindtap="sendMsg" disabled="{{sendDisabled}}">发送</button>
+					<button size="mini" type="warn" bindtap="clearMsg">清空</button>
+					<button size="mini" type="primary" bindtap="settingBle" style="align-self: right;">设置</button>
+					<!-- </view> -->
+
+				</view>
+
+			</view>
+		</block>
+		<block wx:else style="height:100%;width:100%">
+			<block wx:if="{{bleList.length==0}}" style="height:100%;width:100%">
+				<text style="text-align:center;width:100%">暂无数据</text>
+			</block>
+			<block wx:else style="height:100%;width:100%">
+				<view wx:for="{{bleList}}" wx:key="index" data-device-id="{{item.deviceId}}" id="{{index}}" data-name="{{item.name}}" bindtap="createBLEConnection" class="device_item" hover-class="device_item_hover">
+					<view style="font-size: 16px; color: #333;">{{item.name}}</view>
+					<view style="font-size: 10px">UUID: {{item.deviceId}}</view>
+				</view>
+			</block>
+		</block>
+	</view>
+	<view class="bodyBottom">
+		<view class="bleSearch" hover-class="btn-hover" bindtap="bleSearch">
+			<image style="width:50px;height:50px" mode="widthFix" src="https://6464-ddr-ebpze-1259562605.tcb.qcloud.la/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%8A%9F%E8%83%BD%E5%90%88%E9%9B%86/search.png?sign=fd0a85c3dfb734b8d3e9e456de3e80a2&t=1592031235"></image>
+			<text>搜索</text>
+		</view>
+	</view>
+</view>
+
+<view class="outterBorder" style="display:{{display}}" catchtap="dismissList">
+	<view class="centerSelector">
+		<scroll-view style="height:100%;width:100%" scroll-y scroll-with-animation>
+			<view wx:for="{{devices}}" wx:key="index" data-device-id="{{item.deviceId}}" id="{{index}}" data-name="{{item.name || item.localName}}" bindtap="createBLEConnection" class="device_item" hover-class="device_item_hover">
+				<!-- <view style="font-size: 18px; color: #f00;">名字</view> -->
+				<view style="font-size: 16px; color: #333;">{{item.name}}</view>
+				<view style="font-size: 10px">信号强度: {{item.RSSI}}dBm ({{utils.max(0, item.RSSI + 100)}}%)</view>
+				<view style="font-size: 10px">UUID: {{item.deviceId}}</view>
+				<!-- <view style="font-size: 10px">Service数量: {{utils.len(item.advertisServiceUUIDs)}}</view> -->
+			</view>
+		</scroll-view>
+	</view>
+</view>
+
+<view class="outterBorder" style="display:{{menuDisplay}}">
+	<view class="centerMenu">
+		<view>
+			显示设置
+			<radio-group style="display:flex;flex-direction: column;width:auto; margin-left:10px;margin-bottom:5px" bindchange="radioChange">
+				<radio value="sendString" checked='true' value="string">字符串显示</radio>
+				<radio value="send16" value="hex">十六进制显示</radio>
+			</radio-group>
+			发送设置
+			<checkbox-group style="display:flex;flex-direction: column;width:auto;margin-left:10px;margin-bottom:5px" bindchange="checkBoxChange">
+				<view style="display:flex;margin-bottom:3px;justify-content: space-between;">
+					<checkbox value="sendDelay">定时发送</checkbox>
+					<input type="digit" disabled="{{delayDisabled}}" bindinput="delaylistener" placeholder="请输入毫秒数" 
+					class="{{inputClassDelay}}"></input>
+				</view>
+				<view style="display:flex;margin-bottom:3px;justify-content: space-between;">
+					<checkbox value="mtuSpeed">mtu速率</checkbox>
+					<input type="digit" disabled="{{mtuDisabled}}"  bindinput="mtulistener" placeholder="请输入22-512的数" 
+					class="{{inputClassMtu}}"></input>
+				</view>
+			</checkbox-group>
+		</view>
+		<view style="display:flex;justify-content:center;">
+			<button size="mini" type="primary" bindtap="menuComfirm" class="sendcodebtn" > 确定</button>
+			<button size="mini" type="warn" bindtap="menuCancel">取消</button>
+		</view>
+	</view>
+</view>
