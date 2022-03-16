@@ -52,6 +52,8 @@ Page({
     const that = this;
     // console.log(e.detail.value)
     if (e.detail.value == true) {
+      // 点击打开ble时打开蓝牙适配器
+
       // console.log(1, that.data.isChecked)
       bleHelper.openBluetoothAdapter({
         success: function () {
@@ -69,6 +71,7 @@ Page({
       });
       // console.log(2, that.data.isChecked)
       bleHelper.onBluetoothAdapterStateChange();
+      // 监听蓝牙状态
       bleHelper.onBLEConnectionStateChange((res) => {
         if (res.connected) {
           logUtil.showToast('蓝牙已连接');
@@ -89,6 +92,7 @@ Page({
     else {  
       // console.log(3, that.data.isChecked);
       that.data.isChecked=false;
+      // 关闭监听事件
       bleHelper.offBLECharacteristicValueChange();
       bleHelper.offBLEConnectionStateChange();
       bleHelper.offBluetoothAdapterStateChange();
@@ -112,6 +116,7 @@ Page({
     },500)
     console.log(4, that.data.isChecked)
   },
+
   dismissList: function () {
     const that = this;
     console.log('bind');
@@ -119,6 +124,7 @@ Page({
       display: 'none'
     })
   },
+  
   //搜索按钮点击
   bleSearch: function () {
     const that = this;
