@@ -24,13 +24,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    wx.showToast({
-      title: '请等一下',
-      duration:3000,
-      icon:"loading"
-    })
+    // wx.showToast({
+    //   title: '请等一下',
+    //   duration:3000,
+    //   icon:"loading"
+    // })
     this.addApplication();
-    this.jumpNav();
+    // this.jumpNav();
   },
 
   /**
@@ -138,10 +138,10 @@ Page({
   },
   callPage:function(e){
     console.log(e);
-    wx.setStorage({
-      data: e.currentTarget.id,
-      key: 'nav_url',
-    })
+    // wx.setStorage({
+    //   data: e.currentTarget.id,
+    //   key: 'nav_url',
+    // })
     wx.navigateTo({
       url: e.currentTarget.id,
     })
