@@ -61,10 +61,10 @@ Page({
           that.data.isChecked=true;
         },
         fail: function () {
-          wx.showModal({
-            title: '无法打开蓝牙',
-            cancelColor: 'cancelColor',
-          })
+          // wx.showModal({
+          //   title: '无法打开蓝牙',
+          //   cancelColor: 'cancelColor',
+          // })
           // that.data.isConnected=false;
           that.data.isChecked=false;
         }
@@ -124,7 +124,7 @@ Page({
       display: 'none'
     })
   },
-  
+
   //搜索按钮点击
   bleSearch: function () {
     const that = this;
